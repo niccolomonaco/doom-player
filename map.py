@@ -1,4 +1,5 @@
 import pygame as pg
+from settings import RECT_DIM
 
 
 _ = False
@@ -34,5 +35,9 @@ class Map:
                     self.world_map[(i, j)] = value
 
     def draw(self):
-        [pg.draw.rect(self.game.screen, 'lightblue', (pos[0] * 50, pos[1] * 50, 50, 50), 2)
+        [pg.draw.rect(
+            self.game.screen,
+            'lightblue',
+            (pos[0] * RECT_DIM, pos[1] * RECT_DIM, RECT_DIM, RECT_DIM),
+            2)
          for pos in self.world_map]
