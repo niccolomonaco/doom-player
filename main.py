@@ -2,6 +2,7 @@ import pygame as pg
 import sys
 from map import Map
 from player import Player
+from raycasting import RayCasting
 from settings import RES, FPS
 
 
@@ -16,17 +17,19 @@ class Game:
     def new_game(self):
         self.map = Map(self)
         self.player = Player(self)
+        self.raycasting = RayCasting(self)
 
     def update(self):
         self.player.update()
+        self.raycasting.update()
         pg.display.flip()
         self.delta_time = self.clock.tick(FPS)
         pg.display.set_caption(f"{self.clock.get_fps():.1f}")
 
     def draw(self):
         self.screen.fill("black")
-        self.map.draw()
-        self.player.draw()
+        # self.map.draw()
+        # self.player.draw()
 
     def check_events(self):
         for event in pg.event.get():
